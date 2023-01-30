@@ -1140,6 +1140,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _object: {fileID: 1538100609}
+  _leftBorder: -0.1
+  _rightBorder: -0.9
+  _upBorder: 0.9
+  _downBorder: 0.1
+  _forwardBorder: 0.9
+  _backwardBorder: 0.1
 --- !u!114 &1756517701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,6 +1156,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 337a28aea7410f740ba67ba9212d9d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1756517702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538100609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de99d68d96d34914baa97eee5c94e3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2038842876
@@ -1170,7 +1188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2038842877
 Transform:
   m_ObjectHideFlags: 0
@@ -1179,7 +1197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038842876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1209,10 +1227,10 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
-  far clip plane: 1
-  field of view: 60
-  orthographic: 1
+  near clip plane: 1
+  far clip plane: 2
+  field of view: 54.05986
+  orthographic: 0
   orthographic size: 0.5
   m_Depth: 0
   m_CullingMask:
@@ -1220,7 +1238,7 @@ Camera:
     m_Bits: 64
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1

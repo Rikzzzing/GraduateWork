@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class InputScreenshotCamera : MonoBehaviour
 {
     private InputDoc _inputDoc;
-    private IDoScreenshot _screenShot;
+    private IScreenshotable _screenShot;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class InputScreenshotCamera : MonoBehaviour
             _inputDoc = new InputDoc();
         }
 
-        _screenShot = GetComponent<IDoScreenshot>();
+        _screenShot = GetComponent<IScreenshotable>();
 
         if (_screenShot == null)
         {
@@ -30,7 +30,7 @@ public class InputScreenshotCamera : MonoBehaviour
 
     private void OnScreenshotPerfermed(InputAction.CallbackContext obj)
     {
-        _screenShot.MakeScreenshot();
+        _screenShot.Screenshot();
     }
 
     private void OnDisable()

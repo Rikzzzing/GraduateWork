@@ -31,7 +31,7 @@ public class InputObject : MonoBehaviour
     private void OnMovePerfermed(InputAction.CallbackContext obj)
     {
         var inputDirection = _inputDoc.Management.Move.ReadValue<Vector3>();
-        _movable.Move(inputDirection);
+        _movable.ManualInputMove(inputDirection);
     }
 
     private void OnDisable()

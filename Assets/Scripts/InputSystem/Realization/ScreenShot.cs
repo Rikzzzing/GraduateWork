@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ScreenShot : MonoBehaviour, IDoScreenshot
+public class ScreenShot : MonoBehaviour, IScreenshotable
 {
-    public void MakeScreenshot()
+    public void Screenshot()
     {
         Debug.Log("Screenshot maked");
         ScreenCapture.CaptureScreenshot("Screenshot01.png", 1);

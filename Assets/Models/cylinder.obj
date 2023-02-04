@@ -1,7 +1,7 @@
 # Blender 3.4.1
 # www.blender.org
-mtllib cylinder.mtl
-o Цилиндр
+mtllib Cylinder.mtl
+o Cylinder
 v 0.000000 -0.100000 -0.100000
 v 0.000000 0.100000 -0.100000
 v 0.019509 -0.100000 -0.098079

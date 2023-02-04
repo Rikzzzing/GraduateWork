@@ -1,7 +1,7 @@
 # Blender 3.4.1
 # www.blender.org
-mtllib cube.mtl
-o Куб
+mtllib Cube.mtl
+o Cube
 v -0.100000 -0.100000 0.100000
 v -0.100000 0.100000 0.100000
 v -0.100000 -0.100000 -0.100000

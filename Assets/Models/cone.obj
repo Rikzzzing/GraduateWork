@@ -1,7 +1,7 @@
 # Blender 3.4.1
 # www.blender.org
-mtllib cone.mtl
-o Конус
+mtllib Cone.mtl
+o Cone
 v 0.000000 -0.100000 -0.100000
 v 0.019509 -0.100000 -0.098079
 v 0.038268 -0.100000 -0.092388

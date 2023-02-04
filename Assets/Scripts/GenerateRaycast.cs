@@ -65,7 +65,7 @@ public class GenerateRaycast : MonoBehaviour
         {
             for (int j = 0; j <= _countRay; j++)
             {
-                Debug.DrawRay(_currentPosition, _directionRay * 10, Color.blue);
+                Debug.DrawRay(_currentPosition, _directionRay * 50, Color.blue);
                 _currentPosition = _currentPosition + xOffset;
             }
             _currentPosition = _startPosition + yOffset * (i + 1);
@@ -78,7 +78,7 @@ public class GenerateRaycast : MonoBehaviour
         {
             for (int j = 0; j <= _countRay; j++)
             {
-                Debug.DrawRay(_currentPosition, _directionRay * 10, Color.red);
+                Debug.DrawRay(_currentPosition, _directionRay * 50, Color.red);
                 _currentPosition = _currentPosition + zOffset;
             }
             _currentPosition = _startPosition + yOffset * (i + 1);
@@ -91,7 +91,7 @@ public class GenerateRaycast : MonoBehaviour
         {
             for (int j = 0; j <= _countRay; j++)
             {
-                Debug.DrawRay(_currentPosition, _directionRay * 10, Color.green);
+                Debug.DrawRay(_currentPosition, _directionRay * 50, Color.green);
                 _currentPosition = _currentPosition + xOffset;
             }
             _currentPosition = _startPosition + zOffset * (i + 1);

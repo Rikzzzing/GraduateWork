@@ -10,7 +10,7 @@ public class AutomaticObjectTransform : MonoBehaviour
     private void Awake()
     {
         _movable = GetComponent<IMovable>();
-        _direction = new Vector3(-1, 0, 0);
+        _direction = new Vector3(-1, 1, 1);
 
         if (_movable == null)
         {

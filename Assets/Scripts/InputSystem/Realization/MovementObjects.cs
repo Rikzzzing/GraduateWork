@@ -12,24 +12,34 @@ public class MovementObjects : MonoBehaviour, IMovable
     [SerializeField] private float _backwardBorder;
 
     private Vector3 _startPosition;
+    private Quaternion _startRotation;
     private Vector3 _startScale;
+
     private Vector3 _currentPosition;
+    private Vector3 _angleRotation;
     private Vector3 _currentScale;
 
-    private Quaternion _startRotation;
-    private Vector3 _currentRotation;
-    private Vector3 _angleRotation;
+    private byte _bitCounterRotation;
+    private byte _bitCounterScale;
+    private byte _xBitMask;
+    private byte _yBitMask;
+    private byte _zBitMask;
 
     private void Awake()
     {
         _startPosition = _parent.transform.position;
+        _startRotation = _object.transform.rotation;
         _startScale = _parent.transform.localScale;
+
         _currentPosition = _startPosition;
+        _angleRotation.Set(0, 0, 0);
         _currentScale = _startScale;
 
-        _startRotation = _object.transform.rotation;
-        _currentRotation = _startRotation.eulerAngles;
-        _angleRotation.Set(15, 0, 0);
+        _bitCounterRotation = 1;
+        _bitCounterScale = 1;
+        _xBitMask = 1;
+        _yBitMask = 2;
+        _zBitMask = 4;
     }
 
     public void ManualInputMove(Vector3 inputDirection)
@@ -59,7 +69,7 @@ public class MovementObjects : MonoBehaviour, IMovable
 
     public void AutomaticInputMove(Vector3 inputDirection)
     {
-        AutomaticInputRotate(_angleRotation);
+        AutomaticInputRotate();
         _currentPosition.x = (float)System.Math.Round(_currentPosition.x + inputDirection.x / 10, 1);
 
         if (_currentPosition.x < _rightBorder)
@@ -75,7 +85,13 @@ public class MovementObjects : MonoBehaviour, IMovable
                 if (_currentPosition.y > _upBorder)
                 {
                     _currentPosition = _startPosition;
-                    AutomaticInputRotate(_angleRotation);
+                    AutomaticInputRotate();
+
+                    if (_bitCounterRotation >= 8)
+                    {
+                        AutomaticInputScale();
+                        _bitCounterRotation = 1;
+                    }
                 }
             }
         }
@@ -83,15 +99,65 @@ public class MovementObjects : MonoBehaviour, IMovable
         //_parent.transform.position = _currentPosition;
     }
 
-    private void AutomaticInputRotate(Vector3 angleRotation)
+    private void AutomaticInputRotate()
     {
-        //_object.transform.rotation = Quaternion.Euler(_currentRotation + angleRotation).normalized;
-        //_currentRotation = _object.transform.rotation.eulerAngles;
-        _object.transform.Rotate(angleRotation);
-        //Debug.Log(_object.transform.rotation.eulerAngles.x);
-        Debug.Log(_object.transform.rotation.eulerAngles.normalized.x);
-        if (_object.transform.rotation.eulerAngles.x == 360)
-            Debug.Log("Yfitkcz");
-            //_object.transform.rotation = _startRotation;
+        var _prevBitCounter = _bitCounterRotation;
+
+        if ((_bitCounterRotation & _xBitMask) == _xBitMask)
+        {
+            _angleRotation.x += 15;
+
+            if (_angleRotation.x <= 360)
+            {
+                //Debug.Log("X");
+                _object.transform.rotation = _startRotation * Quaternion.Euler(_angleRotation);
+            }
+            else
+            {
+                _angleRotation.x = 0;
+                _bitCounterRotation++;
+            }
+        }
+
+        if ((_bitCounterRotation & _yBitMask) == _yBitMask)
+        {
+            _angleRotation.y += 15;
+
+            if (_angleRotation.y <= 360)
+            {
+                //Debug.Log("Y");
+                _object.transform.rotation = _startRotation * Quaternion.Euler(_angleRotation);
+            }
+            else if (_bitCounterRotation - _prevBitCounter == 0)
+            {
+                _bitCounterRotation++;
+                _angleRotation.y = 0;
+            }
+            else
+                _angleRotation.y = 0;
+        }
+
+        if ((_bitCounterRotation & _zBitMask) == _zBitMask)
+        {
+            _angleRotation.z += 15;
+
+            if (_angleRotation.z <= 360)
+            {
+                //Debug.Log("Z");
+                _object.transform.rotation = _startRotation * Quaternion.Euler(_angleRotation);
+            }
+            else if (_bitCounterRotation - _prevBitCounter == 0)
+            {
+                _bitCounterRotation++;
+                _angleRotation.z = 0;
+            }
+            else
+                _angleRotation.z = 0;
+        }
+    }
+
+    private void AutomaticInputScale()
+    {
+
     }
 }

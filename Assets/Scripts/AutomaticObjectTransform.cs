@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AutomaticObjectTransform : MonoBehaviour
 {
+    [SerializeField][Range(0.01f, 1.00f)] private float _timeIteration;
+
     private IMovable _movable;
-    private Vector3 _direction;
 
     private void Awake()
     {
         _movable = GetComponent<IMovable>();
-        _direction = new Vector3(-1, 1, 1);
 
         if (_movable == null)
         {
@@ -20,11 +20,11 @@ public class AutomaticObjectTransform : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("AutoMove", 0.5f, 0.5f);
+        InvokeRepeating("AutoMove", _timeIteration, _timeIteration);
     }
 
     private void AutoMove()
     {
-        _movable.AutomaticInputMove(_direction);
+        _movable.AutomaticInputMove();
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class AutomaticObjectTransform : MonoBehaviour
@@ -25,6 +24,6 @@ public class AutomaticObjectTransform : MonoBehaviour
 
     private void AutoMove()
     {
-        _movable.AutomaticInputMove();
+        _movable.AutomaticMove();
     }
 }

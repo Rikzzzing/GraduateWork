@@ -30,7 +30,7 @@ public class InputScreenshotCamera : MonoBehaviour
 
     private void OnScreenshotPerfermed(InputAction.CallbackContext obj)
     {
-        _screenShot.Screenshot();
+        _screenShot.ManualInputScreenshot();
     }
 
     private void OnDisable()

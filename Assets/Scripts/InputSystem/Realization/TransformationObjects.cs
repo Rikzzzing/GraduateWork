@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovementObjects : MonoBehaviour, IMovable
+public class TransformationObjects : MonoBehaviour, IMovable
 {
     #region Parametrs in Inspector
     [Header("Object and Parent")]
@@ -85,10 +85,8 @@ public class MovementObjects : MonoBehaviour, IMovable
         _object.transform.position = _stepPosition;
     }
 
-    public void AutomaticInputMove()
+    public void AutomaticMove()
     {
-        //AutomaticInputRotate();       // Для дебага
-        //AutomaticInputScale();        // Для дебага
         _stepPosition.x = (float)System.Math.Round(_stepPosition.x + _inputDirection.x / _dividerMove, 1);
 
         if (_stepPosition.x < _rightBorder)
@@ -104,11 +102,11 @@ public class MovementObjects : MonoBehaviour, IMovable
                 if (_stepPosition.y > _upBorder)
                 {
                     _stepPosition = _startPosition;
-                    AutomaticInputRotate();
+                    AutomaticRotate();
 
                     if (_bitCounterRotation >= _maxBitCounter)
                     {
-                        AutomaticInputScale();
+                        AutomaticScale();
                         _bitCounterRotation = 1;
 
                         if (_bitCounterScale >= _maxBitCounter)
@@ -121,7 +119,7 @@ public class MovementObjects : MonoBehaviour, IMovable
         _parent.transform.position = _stepPosition;
     }
 
-    private void AutomaticInputRotate()
+    private void AutomaticRotate()
     {
         if ((_bitCounterRotation & _xBitMask) == _xBitMask)
             _angleRotation.x += _stepRotate;
@@ -141,7 +139,7 @@ public class MovementObjects : MonoBehaviour, IMovable
         }
     }
 
-    private void AutomaticInputScale()
+    private void AutomaticScale()
     {
         if ((_bitCounterScale & _xBitMask) == _xBitMask)
             _factorScale.x = (float)System.Math.Round(_factorScale.x + _stepScale, 1);

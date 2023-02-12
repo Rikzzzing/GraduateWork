@@ -1,4 +1,5 @@
 public interface IScreenshotable
 {
-    void Screenshot();
+    void ManualInputScreenshot();
+    void AutomaticScreenshot();
 }

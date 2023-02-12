@@ -159,4 +159,14 @@ public class TransformationObjects : MonoBehaviour, IMovable
             _bitCounterScale++;
         }
     }
+
+    public Vector3 GetCurrentModelPosition()
+    {
+        return gameObject.GetComponentInChildren<Renderer>().bounds.min;
+    }
+
+    public Vector3 GetModelSize()
+    {
+        return gameObject.GetComponentInChildren<Renderer>().bounds.size;
+    }
 }

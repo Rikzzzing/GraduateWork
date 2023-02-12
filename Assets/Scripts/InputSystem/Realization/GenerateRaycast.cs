@@ -41,22 +41,22 @@ public class GenerateRaycast : MonoBehaviour, IRaycastable
 
     }
 
-    public void AutomaticRaycast(Vector3 area, Vector3 startPosition)
+    public void AutomaticRaycast(Vector3 startPosition, Vector3 area)
     {
-        CalculateOffset(area, startPosition);
+        CalculateOffset(startPosition, area);
 
         for (int i = 0; i <= _countRay; i++)
         {
             for (int j = 0; j <= _countRay; j++)
             {
-                Debug.DrawRay(_currentPosition, _directionRay, _color);
+                Debug.DrawRay(_currentPosition, _directionRay*5, _color);
                 _currentPosition = _currentPosition + _OffsetAxis1;
             }
             _currentPosition = _startPosition + _OffsetAxis2 * (i + 1);
         }
     }
 
-    private void CalculateOffset(Vector3 area, Vector3 startPosition)
+    private void CalculateOffset(Vector3 startPosition, Vector3 area)
     {
         switch (_planeType)
         {

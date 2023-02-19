@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class InputObject : MonoBehaviour
 {
     private InputDoc _inputDoc;
-    private IMovable _movable;
+    private ITransformable _movable;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class InputObject : MonoBehaviour
             _inputDoc = new InputDoc();
         }
 
-        _movable = GetComponent<IMovable>();
+        _movable = GetComponent<ITransformable>();
 
         if (_movable == null)
         {

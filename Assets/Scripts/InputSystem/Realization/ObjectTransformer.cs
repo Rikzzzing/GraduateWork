@@ -1,6 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class TransformationObjects : MonoBehaviour, IMovable
+public class ObjectTransformer : MonoBehaviour, ITransformable
 {
     #region Parametrs in Inspector
     [Header("Object and Parent")]
@@ -40,6 +41,8 @@ public class TransformationObjects : MonoBehaviour, IMovable
     private byte _yBitMask;
     private byte _zBitMask;
 
+    private int _transformIteration;
+
     private void Awake()
     {
         _inputDirection.Set(-1, 1, 1);
@@ -58,6 +61,8 @@ public class TransformationObjects : MonoBehaviour, IMovable
         _xBitMask = 1;
         _yBitMask = 2;
         _zBitMask = 4;
+
+        _transformIteration = 0;
     }
 
     public void ManualInputMove(Vector3 inputDirection)
@@ -87,6 +92,7 @@ public class TransformationObjects : MonoBehaviour, IMovable
 
     public void AutomaticMove()
     {
+        _transformIteration++;
         _stepPosition.x = (float)System.Math.Round(_stepPosition.x + _inputDirection.x / _dividerMove, 1);
 
         if (_stepPosition.x < _rightBorder)
@@ -110,7 +116,10 @@ public class TransformationObjects : MonoBehaviour, IMovable
                         _bitCounterRotation = 1;
 
                         if (_bitCounterScale >= _maxBitCounter)
+                        {
                             _bitCounterScale = 1;
+                            _transformIteration = 0;
+                        }
                     }
                 }
             }
@@ -168,5 +177,15 @@ public class TransformationObjects : MonoBehaviour, IMovable
     public Vector3 GetModelSize()
     {
         return gameObject.GetComponentInChildren<Renderer>().bounds.size;
+    }
+
+    public string GetModelName()
+    {
+        return gameObject.transform.GetChild(0).name;
+    }
+
+    public int GetTransformIteration()
+    {
+        return _transformIteration;
     }
 }

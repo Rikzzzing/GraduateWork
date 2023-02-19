@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class InputScreenshotCamera : MonoBehaviour
 {
     private InputDoc _inputDoc;
-    private IScreenshotable _screenShot;
+    private IScreenshotable _screenshotable;
 
     private void Awake()
     {
@@ -14,9 +14,9 @@ public class InputScreenshotCamera : MonoBehaviour
             _inputDoc = new InputDoc();
         }
 
-        _screenShot = GetComponent<IScreenshotable>();
+        _screenshotable = GetComponent<IScreenshotable>();
 
-        if (_screenShot == null)
+        if (_screenshotable == null)
         {
             throw new Exception($"There is no IJumpable on the object: {gameObject.name}");
         }
@@ -30,7 +30,7 @@ public class InputScreenshotCamera : MonoBehaviour
 
     private void OnScreenshotPerfermed(InputAction.CallbackContext obj)
     {
-        _screenShot.ManualInputScreenshot();
+        _screenshotable.ManualInputScreenshot();
     }
 
     private void OnDisable()

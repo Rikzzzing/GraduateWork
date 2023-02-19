@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface IRaycastable
 {
     void ManualInputRaycast();
-    void AutomaticRaycast(Vector3 startPosition, Vector3 area);
+    List<Vector3> AutomaticRaycast(Vector3 startPosition, Vector3 area);
 }

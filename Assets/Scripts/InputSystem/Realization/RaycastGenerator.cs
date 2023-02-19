@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
-public class GenerateRaycast : MonoBehaviour, IRaycastable
+public class RaycastGenerator : MonoBehaviour, IRaycastable
 {
     #region Parametrs in Inspector
     [SerializeField][Range(1, 100)] private int _countRay;
@@ -15,11 +17,14 @@ public class GenerateRaycast : MonoBehaviour, IRaycastable
     private Vector3 _OffsetAxis1;
     private Vector3 _OffsetAxis2;
 
+    private RaycastHit _hit;
+
+    private List<Vector3> _vertexes;
+
     private string _planeType;
 
     private void Awake()
     {
-        var size = GetComponent<Collider>().bounds.size;
         _planeType = gameObject.name;
 
         switch (_planeType)
@@ -34,6 +39,8 @@ public class GenerateRaycast : MonoBehaviour, IRaycastable
                 _directionRay = Vector3.up;
                 break;
         }
+
+        _vertexes = new List<Vector3>();
     }
 
     public void ManualInputRaycast()
@@ -41,19 +48,28 @@ public class GenerateRaycast : MonoBehaviour, IRaycastable
 
     }
 
-    public void AutomaticRaycast(Vector3 startPosition, Vector3 area)
+    public List<Vector3> AutomaticRaycast(Vector3 startPosition, Vector3 area)
     {
+        _vertexes.Clear();
+
         CalculateOffset(startPosition, area);
 
         for (int i = 0; i <= _countRay; i++)
         {
             for (int j = 0; j <= _countRay; j++)
             {
-                Debug.DrawRay(_currentPosition, _directionRay*5, _color);
-                _currentPosition = _currentPosition + _OffsetAxis1;
+                Physics.Raycast(_currentPosition, _directionRay, out _hit, 5);
+                Debug.DrawRay(_currentPosition, _directionRay * 5, _color, 10); // 60 seconds
+                //Debug.Log(Physics.Raycast(_ray, 5));
+                Debug.Log($"{_planeType}. vertex: " + _hit.point);
+                _vertexes.Add(_hit.point);
+                _currentPosition += _OffsetAxis1;
             }
             _currentPosition = _startPosition + _OffsetAxis2 * (i + 1);
         }
+
+        Debug.Log("==========================================");
+        return _vertexes;
     }
 
     private void CalculateOffset(Vector3 startPosition, Vector3 area)

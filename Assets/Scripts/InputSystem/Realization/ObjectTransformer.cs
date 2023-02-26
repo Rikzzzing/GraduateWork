@@ -21,7 +21,7 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
     [Header("Parametrs of movement")]
     [SerializeField][Range(0.1f, 1.0f)] private float _stepScale;
     [SerializeField][Range(1, 60)] private byte _stepRotate;
-    [SerializeField][Range(1, 50)] private byte _dividerMove;
+    [SerializeField][Range(0.1f, 2.0f)] private float _dividerMove;
     #endregion
 
     private Vector3 _inputDirection;
@@ -45,7 +45,7 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
 
     private void Awake()
     {
-        _inputDirection.Set(-1, 1, 1);
+        _inputDirection = Vector3.one;
 
         _startPosition = _parent.transform.position;
         _startRotation = _object.transform.rotation;
@@ -67,27 +67,28 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
 
     public void ManualInputMove(Vector3 inputDirection)
     {
-        _stepPosition.x = (float)System.Math.Round(_stepPosition.x + inputDirection.x / 10, 1);
+        _stepPosition.x = (float)System.Math.Round(_stepPosition.x + inputDirection.x / _dividerMove, 1);
         if (_stepPosition.x > _leftBorder)
             _stepPosition.x = _rightBorder;
         else if (_stepPosition.x < _rightBorder)
             _stepPosition.x = _leftBorder;
 
 
-        _stepPosition.y = (float)System.Math.Round(_stepPosition.y + inputDirection.y / 10, 1);
+        _stepPosition.y = (float)System.Math.Round(_stepPosition.y + inputDirection.y / _dividerMove, 1);
         if (_stepPosition.y < _downBorder)
             _stepPosition.y = _upBorder;
         else if (_stepPosition.y > _upBorder)
             _stepPosition.y = _downBorder;
 
 
-        _stepPosition.z = (float)System.Math.Round(_stepPosition.z + inputDirection.z / 10, 1);
+        _stepPosition.z = (float)System.Math.Round(_stepPosition.z + inputDirection.z / _dividerMove, 1);
         if (_stepPosition.z < _backwardBorder)
             _stepPosition.z = _forwardBorder;
         else if (_stepPosition.z > _forwardBorder)
             _stepPosition.z = _backwardBorder;
 
         _object.transform.position = _stepPosition;
+        Debug.Log("Object moved (Manual Input)");
     }
 
     public void AutomaticMove()
@@ -95,9 +96,9 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
         _transformIteration++;
         _stepPosition.x = (float)System.Math.Round(_stepPosition.x + _inputDirection.x / _dividerMove, 1);
 
-        if (_stepPosition.x < _rightBorder)
+        if (_stepPosition.x > _leftBorder)
         {
-            _stepPosition.x = _leftBorder;
+            _stepPosition.x = _rightBorder;
             _stepPosition.z = (float)System.Math.Round(_stepPosition.z + _inputDirection.z / _dividerMove, 1);
 
             if (_stepPosition.z > _forwardBorder)

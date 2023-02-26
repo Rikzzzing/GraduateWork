@@ -33,7 +33,7 @@ public class RaycastGenerator : MonoBehaviour, IRaycastable
                 _directionRay = Vector3.forward;
                 break;
             case "Side":
-                _directionRay = Vector3.left;
+                _directionRay = Vector3.right;
                 break;
             case "Bottom":
                 _directionRay = Vector3.up;
@@ -58,8 +58,8 @@ public class RaycastGenerator : MonoBehaviour, IRaycastable
         {
             for (int j = 0; j <= _countRay; j++)
             {
-                Physics.Raycast(_currentPosition, _directionRay, out _hit, 5);
-                Debug.DrawRay(_currentPosition, _directionRay * 5, _color, 10); // 60 seconds
+                Physics.Raycast(_currentPosition, _directionRay, out _hit, 20);
+                Debug.DrawRay(_currentPosition, _directionRay * 20, _color, 10); // 60 seconds
                 //Debug.Log(Physics.Raycast(_ray, 5));
                 Debug.Log($"{_planeType}. vertex: " + _hit.point);
                 _vertexes.Add(_hit.point);

@@ -70,6 +70,7 @@ public class GlobalController : MonoBehaviour
 
         Debug.Log("_startPosition: " + _startPosition.ToString("F5"));
         Debug.Log("_area: " + _area.ToString("F5"));
+        Debug.Log("_name: " + _name);
         Debug.Log("==========================================");
 
         yield return new WaitForSeconds(_iterationTime / 2);
@@ -79,7 +80,7 @@ public class GlobalController : MonoBehaviour
         _vertexes = _raycastableBottom.AutomaticRaycast(_startPosition, _area);
         _vertexes.AddRange(_raycastableFront.AutomaticRaycast(_startPosition, _area));
         _vertexes.AddRange(_raycastableSide.AutomaticRaycast(_startPosition, _area));
-        _vertexes = _vertexes.Union(_vertexes).ToList();
+        //_vertexes = _vertexes.Union(_vertexes).ToList();
 
         Debug.Log("==========================================");
         Debug.Log("We have a list of vertexes:");
@@ -96,7 +97,7 @@ public class GlobalController : MonoBehaviour
 
     private void WriteToFile()
     {
-        _file = new StreamWriter($"Dataset\\DatasetRes\\Vertex_Info_{_transformable.GetTransformIteration()}.txt");
+        _file = new StreamWriter($"Dataset\\DatasetRes\\{_name}_{_transformable.GetTransformIteration()}.txt");
         char[] ch = { '(', ')' };
         foreach (Vector3 vertex in _vertexes)
         {

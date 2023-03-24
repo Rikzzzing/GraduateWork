@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectTransformer : MonoBehaviour, ITransformable
@@ -7,6 +6,8 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
     [Header("Object and Parent")]
     [SerializeField] private GameObject _object;
     [SerializeField] private GameObject _parent;
+    [SerializeField] private Mesh[] _mesh;
+    [SerializeField] private string[] _name;
     [Space(2)]
 
     [Header("Borders of movement")]
@@ -41,6 +42,7 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
     private byte _yBitMask;
     private byte _zBitMask;
 
+    private byte _numberOfMesh;
     private int _transformIteration;
 
     private void Awake()
@@ -62,6 +64,7 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
         _yBitMask = 2;
         _zBitMask = 4;
 
+        _numberOfMesh = 1;
         _transformIteration = 0;
     }
 
@@ -120,6 +123,9 @@ public class ObjectTransformer : MonoBehaviour, ITransformable
                         {
                             _bitCounterScale = 1;
                             _transformIteration = 0;
+                            _object.GetComponentInChildren<MeshFilter>().mesh = _mesh[_numberOfMesh % _mesh.Length];
+                            _object.GetComponentInChildren<MeshCollider>().sharedMesh = _mesh[_numberOfMesh % _mesh.Length];
+                            _object.transform.GetChild(0).name = _name[_numberOfMesh++ % _name.Length];
                         }
                     }
                 }

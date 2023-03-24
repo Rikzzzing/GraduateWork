@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f653b398bd168d4f9499c02d5eeb10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countRay: 100
+  _countRay: 4
   _maskRay:
     serializedVersion: 2
     m_Bits: 64
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f653b398bd168d4f9499c02d5eeb10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countRay: 100
+  _countRay: 4
   _maskRay:
     serializedVersion: 2
     m_Bits: 64
@@ -806,7 +806,7 @@ PrefabInstance:
     - target: {fileID: -6400281290468069383, guid: 6f5578c9475659e418cda62f0d58f751, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -2432090755550338912, guid: e246dce46600c4e47ab4ed6ad811c7da, type: 3}
+      objectReference: {fileID: -2432090755550338912, guid: e200394a01fe5c447b1a7601ddc9be83, type: 3}
     - target: {fileID: 919132149155446097, guid: 6f5578c9475659e418cda62f0d58f751, type: 3}
       propertyPath: m_Name
       value: Model
@@ -853,7 +853,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: e246dce46600c4e47ab4ed6ad811c7da, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: e200394a01fe5c447b1a7601ddc9be83, type: 3}
 --- !u!114 &1671131084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,6 +880,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _object: {fileID: 1671131082}
   _parent: {fileID: 710145574}
+  _parametrsOfModels:
+  - {fileID: 0}
+  - {fileID: 0}
+  _mesh:
+  - {fileID: -2432090755550338912, guid: e200394a01fe5c447b1a7601ddc9be83, type: 3}
+  - {fileID: -2432090755550338912, guid: 493fb539f45a5e34d83c0c4d206a6a6d, type: 3}
+  - {fileID: -2432090755550338912, guid: 6f5578c9475659e418cda62f0d58f751, type: 3}
+  - {fileID: -2432090755550338912, guid: 755f6b3a4b4229443860385aeaa08bb7, type: 3}
+  - {fileID: -2432090755550338912, guid: e246dce46600c4e47ab4ed6ad811c7da, type: 3}
+  - {fileID: -2432090755550338912, guid: 4d17a83d1a873c94291b5ab6c32fb14e, type: 3}
+  - {fileID: -2432090755550338912, guid: fe3e1fb411c2035418605d4498d5eb96, type: 3}
+  _name:
+  - Cube
+  - Cylinder
+  - Cone
+  - Sphere
+  - Torus
+  - Pyramid
+  - Cross
   _leftBorder: 16
   _rightBorder: 2
   _upBorder: 16
@@ -986,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f653b398bd168d4f9499c02d5eeb10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countRay: 100
+  _countRay: 4
   _maskRay:
     serializedVersion: 2
     m_Bits: 64

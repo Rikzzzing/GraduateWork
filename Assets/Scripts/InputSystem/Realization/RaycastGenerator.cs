@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 public class RaycastGenerator : MonoBehaviour, IRaycastable
 {
@@ -54,9 +53,9 @@ public class RaycastGenerator : MonoBehaviour, IRaycastable
 
         CalculateOffset(startPosition, area);
 
-        for (int i = 0; i <= _countRay; i++)
+        for (int i = 0; i < _countRay; i++)
         {
-            for (int j = 0; j <= _countRay; j++)
+            for (int j = 0; j < _countRay; j++)
             {
                 Physics.Raycast(_currentPosition, _directionRay, out _hit, 20);
                 Debug.DrawRay(_currentPosition, _directionRay * 20, _color, 10); // 60 seconds

@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded45f2fe9089d341954bd57dd0aaf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iterationTime: 0.7
+  _iterationTime: 2
 --- !u!4 &1262674286
 Transform:
   m_ObjectHideFlags: 0
@@ -880,6 +880,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _object: {fileID: 1671131082}
   _parent: {fileID: 710145574}
+  _parametrsOfModels:
+  - {fileID: 0}
+  - {fileID: 0}
   _mesh:
   - {fileID: -2432090755550338912, guid: e200394a01fe5c447b1a7601ddc9be83, type: 3}
   - {fileID: -2432090755550338912, guid: 493fb539f45a5e34d83c0c4d206a6a6d, type: 3}
@@ -902,8 +905,8 @@ MonoBehaviour:
   _downBorder: 2
   _forwardBorder: 16
   _backwardBorder: 2
-  _stepScale: 1
-  _stepRotate: 30
+  _stepScale: 0.1
+  _stepRotate: 10
   _dividerMove: 0.5
 --- !u!1001 &1725973714
 PrefabInstance:

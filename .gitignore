@@ -65,6 +65,7 @@ crashlytics-build.properties
 
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
+<<<<<<< HEAD
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /[Dd]ataset/[Dd]atasetScreenshots/*
@@ -72,7 +73,11 @@ crashlytics-build.properties
 /[Dd]ataset/*.rar
 /[Dd]ataset/*.rarr
 
+/[Dd]ataset/[Dd]ataset_test/dataset.npz
 /[Dd]ataset/[Dd]ataset_test/x_test/*
 /[Dd]ataset/[Dd]ataset_test/y_test/*
 /[Dd]ataset/[Dd]ataset_test/x_train/*
 /[Dd]ataset/[Dd]ataset_test/y_train/*
+=======
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+>>>>>>> parent of d3a9750 (Дипломная работа ч.13)

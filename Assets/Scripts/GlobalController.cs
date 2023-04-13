@@ -2,12 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class GlobalController : MonoBehaviour
 {
-    [SerializeField][Range(2, 10)] private byte _iterationTime;
+    [SerializeField][Range(0.1f, 1.5f)] private float _iterationTime;
     private IScreenshotable _screenshotable;
     private IRaycastable _raycastableFront;
     private IRaycastable _raycastableSide;
@@ -77,9 +76,11 @@ public class GlobalController : MonoBehaviour
 
         _screenshotable.AutomaticScreenshot(_name, _transformable.GetTransformIteration());
 
-        _vertexes = _raycastableBottom.AutomaticRaycast(_startPosition, _area);
-        _vertexes.AddRange(_raycastableFront.AutomaticRaycast(_startPosition, _area));
-        _vertexes.AddRange(_raycastableSide.AutomaticRaycast(_startPosition, _area));
+        _vertexes = _raycastableFront.AutomaticRaycast(_startPosition, _area);
+
+        //_vertexes = _raycastableBottom.AutomaticRaycast(_startPosition, _area);
+        //_vertexes.AddRange(_raycastableFront.AutomaticRaycast(_startPosition, _area));
+        //_vertexes.AddRange(_raycastableSide.AutomaticRaycast(_startPosition, _area));
         //_vertexes = _vertexes.Union(_vertexes).ToList();
 
         Debug.Log("==========================================");
@@ -97,7 +98,8 @@ public class GlobalController : MonoBehaviour
 
     private void WriteToFile()
     {
-        _file = new StreamWriter($"Dataset\\DatasetRes\\{_name}_{_transformable.GetTransformIteration()}.txt");
+        _file = new StreamWriter($"Dataset\\Dataset_test\\y_train\\{_name}_{_transformable.GetTransformIteration()}.txt");
+        //_file = new StreamWriter($"Dataset\\DatasetRes\\{_name}_{_transformable.GetTransformIteration()}.txt");
         char[] ch = { '(', ')' };
         foreach (Vector3 vertex in _vertexes)
         {

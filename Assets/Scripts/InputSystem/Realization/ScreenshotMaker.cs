@@ -17,6 +17,7 @@ public class ScreenshotMaker : MonoBehaviour, IScreenshotable
     public void AutomaticScreenshot(string name, int number)
     {
         Debug.Log($"Screenshot was taken (Automatic Input with parametrs: {name} {number})\n");
-        ScreenCapture.CaptureScreenshot($"Dataset/DatasetScreenshots/{name}_{number}.png");
+        ScreenCapture.CaptureScreenshot($"Dataset/Dataset_test/x_train/{name}_{number}.png");
+        //ScreenCapture.CaptureScreenshot($"Dataset/DatasetScreenshots/{name}_{number}.png");
     }
 }

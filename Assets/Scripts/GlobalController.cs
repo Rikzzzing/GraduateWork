@@ -97,7 +97,7 @@ public class GlobalController : MonoBehaviour
 
     private void WriteToFile()
     {
-        _file = new StreamWriter($"Dataset\\DatasetRes\\{_name}_{_transformable.GetTransformIteration()}.txt");
+        _file = new StreamWriter($"Dataset\\y_train\\{_name}_{_transformable.GetTransformIteration()}.txt");
         char[] ch = { '(', ')' };
         foreach (Vector3 vertex in _vertexes)
         {

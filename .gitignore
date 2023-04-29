@@ -68,16 +68,11 @@ crashlytics-build.properties
 <<<<<<< HEAD
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/[Dd]ataset/[Dd]atasetScreenshots/*
-/[Dd]ataset/[Dd]atasetRes/*
-/[Dd]ataset/*.rar
-/[Dd]ataset/*.rarr
-
 /[Dd]ataset/[Dd]ataset_test/dataset.npz
-/[Dd]ataset/[Dd]ataset_test/x_test/*
-/[Dd]ataset/[Dd]ataset_test/y_test/*
-/[Dd]ataset/[Dd]ataset_test/x_train/*
-/[Dd]ataset/[Dd]ataset_test/y_train/*
 =======
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 >>>>>>> parent of d3a9750 (Дипломная работа ч.13)
+/Dataset/y_train/*.txt
+/Dataset/x_train/*.png
+/Dataset/y_test/*.txt
+/Dataset/x_test/*.png

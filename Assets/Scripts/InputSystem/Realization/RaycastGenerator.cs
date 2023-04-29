@@ -77,18 +77,18 @@ public class RaycastGenerator : MonoBehaviour, IRaycastable
         {
             case "Front":
                 _startPosition.Set(startPosition.x, startPosition.y, 0);
-                _OffsetAxis1.Set(area.x / _countRay, 0, 0);
-                _OffsetAxis2.Set(0, area.y / _countRay, 0);
+                _OffsetAxis1.Set(area.x / (_countRay - 1), 0, 0);
+                _OffsetAxis2.Set(0, area.y / (_countRay - 1), 0);
                 break;
             case "Side":
                 _startPosition.Set(0, startPosition.y, startPosition.z);
-                _OffsetAxis1.Set(0, area.y / _countRay, 0);
-                _OffsetAxis2.Set(0, 0, area.z / _countRay);
+                _OffsetAxis1.Set(0, area.y / (_countRay - 1), 0);
+                _OffsetAxis2.Set(0, 0, area.z / (_countRay - 1));
                 break;
             case "Bottom":
                 _startPosition.Set(startPosition.x, 0, startPosition.z);
-                _OffsetAxis1.Set(area.x / _countRay, 0, 0);
-                _OffsetAxis2.Set(0, 0, area.z / _countRay);
+                _OffsetAxis1.Set(area.x / (_countRay - 1), 0, 0);
+                _OffsetAxis2.Set(0, 0, area.z / (_countRay - 1));
                 break;
         }
 
